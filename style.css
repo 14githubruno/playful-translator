@@ -1,0 +1,613 @@
+/*Primary style, root, html*/
+:root {
+    --backgroundColor: #0a2733;
+    --infoColor: #e8598b;
+    --navbarBorderColor: #fa807280;
+    --navbarItemsBorderColorShadow: #fa8072;
+    --navbarItemClicked: #fce26e;
+    --translatorTitleColor: #db8739;
+    --copiedTipColors: #ea0449;
+    --logoBackgroundColor: #0a2733;
+    --logoColor: #db8739;
+    --logoBorderColor: #db8739;
+    --moonColor: #0a2733;
+    --sunColor: #fce26e;
+    --footerTextColor: #faebd7;
+    --selectionBackgroundColor: #faebd7;
+    --selectionColor: #0a2733; 
+    --fontFamily: 'JetBrains Mono', monospace;
+}
+
+[data-theme='light'] {
+    --backgroundColor: #faebd7;
+    --infoColor: #e8598b;
+    --navbarBorderColor: #0a2733;
+    --navbarItemsBorderColorShadow: #0a2733;
+    --navbarItemClicked: #0a2733;
+    --translatorTitleColor:#db8739;
+    --copiedTipColors: #ea0449;
+    --logoBackgroundColor: #0a2733;
+    --logoColor: #db8739;
+    --logoBorderColor: #db8739;
+    --moonColor: #0a2733;
+    --sunColor: #fce26e;
+    --footerTextColor: #0a2733;
+    --selectionBackgroundColor: #0a2733;
+    --selectionColor: #faebd7;
+    --fontFamily: 'JetBrains Mono', monospace;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    color: var(--selectionColor);
+    background-color: var(--selectionBackgroundColor);
+}
+
+html,
+body {
+    width: 100%;
+    min-width: 320px;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: var(--fontFamily);
+}
+
+body {
+    background-color: var(--backgroundColor);
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+/* logo and dark/light mode */
+.logo-and-dark-light-mode-container {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 5;
+    width: 100%;
+    min-width: 320px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dark-light-mode-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+}
+
+.checkbox {
+    opacity: 0;
+}
+
+.sun,
+.moon {
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.sun {
+    fill: var(--sunColor);
+}
+
+.moon {
+    display: none;
+    fill: var(--moonColor);
+}
+
+.sun:hover{
+    filter: drop-shadow(5px 5px 18px var(--sunColor));
+}
+
+.moon:hover {
+    filter: drop-shadow(5px 5px 18px var(--moonColor));
+}
+
+.anchor-logo {
+    text-decoration: none;
+}
+
+.logo-container {
+    border: 2px solid var(--logoBorderColor);
+    border-radius: 7px;
+    text-align: center;
+    color: var(--logoColor);
+    background-color: var(--logoBackgroundColor);
+    padding: 5px 4px 6px 4px;
+    position: relative;
+    top: 2px;
+}
+
+.logo {
+    color: var(--logoColor);
+    text-decoration: none;
+    font-size: 1.7rem;
+}
+
+.logo-container:hover,
+.logo-container:active {
+    transform: rotate(-5deg);
+}
+
+/*Main area: title, button, arrow*/
+main, 
+.welcome-and-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    position: relative;
+}
+
+.container-welcome-button {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-and-button {
+    width: 85%;
+    position: relative;
+    padding: 250px 0;
+}
+
+#added-text,
+#sidebar-text {
+    display: none;
+}
+
+#sidebar-text {
+    color: var(--translatorTitleColor);
+    font-size: 1.7rem;
+}
+
+#welcome-title {
+    color: var(--footerTextColor);
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+#playful-translator {
+    color: var(--translatorTitleColor);
+    font-weight: 500;
+}
+
+.browser-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: var(--infoColor);
+    margin-top: 20px;
+    font-family: var(--fontFamily);
+    font-size: 1.6rem;
+    padding: 3px;
+}
+
+.browser-btn::after {
+    content: "";
+    background: url(assets/icons/arrow-left.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    position: relative;
+    top: 4px;
+    animation: arrowBounce 0.4s infinite;
+}
+
+.browser-btn:hover,
+.browser-btn:active {
+    opacity: 0.8;
+}
+
+/*Curtain Menu*/
+#close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    fill: var(--copiedTipColors);
+    height: 1.7rem;
+    cursor: pointer;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    display: none;
+}
+
+header #navbar {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: 0.1s displayMenu ease forwards;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+header #navbar #list-games {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 30vh 0;
+}
+
+header #navbar #list-games li {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+
+header #navbar #list-games li a {
+    text-decoration: none;
+    color: var(--translatorTitleColor);
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+    width: auto;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+header #navbar #list-games li a:active {
+    color: var(--navbarItemClicked);
+}
+
+/*Footer*/
+footer {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--backgroundColor);
+}
+
+.footer-info {
+    font-size: 1.2rem;
+    color: var(--footerTextColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-info .footer-reference {
+    cursor: pointer;
+    color: var(--infoColor);
+    text-decoration: none;
+}
+
+.footer-reference:hover,
+.footer-reference:active {
+    text-decoration: underline 0.15rem;
+}
+
+.footer-reference::after {
+    content: "";
+    background: url(assets/icons/box-arrow-right.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 20px;
+    width: 15px;
+    position: relative;
+    top: 6px;
+    left: 5px;
+    animation: arrowBoxMove 0.5s infinite;
+}
+
+/* class to add/remove with JS when curtain menu opens/closes */
+.animation-paused::after {
+    animation-play-state: paused;
+}
+
+/* style for scrollbar (chrome,edge,safari,opera) */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: 0.01rem solid var(--navbarItemsBorderColor);
+    box-shadow: inset 0 0 10px 0 var(--infoColor);
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--backgroundColor);
+    padding: 2px;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
+/*KEYFRAMES for Animation*/
+@keyframes displayMenu {
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+@keyframes arrowBounce {
+    10%, 10%, 30%, 50%, 70%, 80%, 90%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+@keyframes arrowBoxMove {
+    100% {
+        transform: rotate(-15deg);
+    }
+}
+
+/*MEDIA QUERIES*/
+@media (min-width: 320px) {
+
+    /* handle min-widths and overflow */
+    body {
+        overflow-x: hidden;
+    }
+
+    html, 
+    body,
+    .logo-and-dark-light-mode-container {
+        min-width: 0;
+    }
+}
+
+@media (min-width: 820px) {
+
+    /* body, main */
+    body {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    main {
+        position: relative;
+        min-height: 92vh;
+        width: 84%;
+        left: 16%;
+        padding: 35px 0 10px 0;
+    }
+
+    /* logo and light/dark mode */
+    .logo-and-dark-light-mode-container {
+        width: 16%;
+    }
+
+    .dark-light-mode-container {
+        position: fixed;
+        right: 2px;
+    }
+
+    .sun,
+    .moon {
+        top: -5px;
+    }
+
+    .anchor-logo {
+        position: fixed;
+        top: 10px;
+    }
+
+    /* welcome section */
+    .container-welcome-button {
+        min-height: 85vh;
+    }
+
+    .welcome-and-button {
+        height: 500px;
+        padding: 0;
+    }
+
+    /*Opacity, close-btn, choose-btn and arrow handling - Welcome section*/
+    .browser-btn:hover,
+    .browser-btn:active {
+       opacity: initial;
+       cursor: default;
+    }
+
+    .browser-btn::after {
+        display: none;
+    }
+
+    #added-text,
+    #sidebar-text {
+       display: inline-block;
+    }
+
+    #sidebar-text {
+       font-weight: 700;
+       position: relative;
+       animation: sidebarMove 0.5s infinite;
+    }
+
+    #close-btn {
+        display: none;
+    }
+
+    /*Fixed menu*/
+    header {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16%;
+        height: auto;
+        min-height: 100vh;
+        z-index: 0;
+        left: 0;
+    }
+
+    header #navbar {
+        width: 100%;
+        min-height: 100vh;
+        border-right: 1px solid var(--navbarBorderColor);
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+        transform: none;
+        animation: none;
+        overflow: hidden;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #navbar::after,
+    #navbar::before{
+        content: "";
+        height: 100px;
+    }
+
+    header #navbar #list-games {
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        height: auto;
+    }
+
+    header #navbar #list-games li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+        margin-top: 2px;
+        padding: 0;
+        width: 95%;
+    }
+
+    header #navbar #list-games li a {
+        width: 100%;
+        border: 1px solid var(--navbarBorderColor);
+        border-radius: 7px;
+        font-size: 1.2rem;
+        padding: 15px 0;
+    }
+
+    header #navbar #list-games li a:hover{
+        cursor: pointer;
+        transform: rotate(5deg);
+        background-color: var(--backgroundColor);
+        box-shadow: 0px 0px 6px 0px var(--navbarItemsBorderColorShadow);
+        z-index: 1;
+        border-radius: 7px;
+        position: relative;
+        top: 10%;
+        text-decoration: none;
+        color: var(--translatorTitleColor);
+    }
+
+    header #navbar #list-games li a:active {
+        box-shadow: 0px 0px 10px 0px var(--navbarItemsBorderColorShadow);
+    }
+
+    /* footer */
+    footer {
+        position: relative;
+        left: 16%;
+        width: 84%;
+        min-height: 8vh;
+        margin: 0;  
+        padding: 10px;
+    }
+    
+    footer .footer-info {
+        max-width: 800px;
+    }
+
+    /* keyframes for animation */
+    @keyframes sidebarMove {
+        0% {
+            transform: rotate(5deg);
+            top: 10px;
+        }
+        100% {
+            transform: rotate(5deg);
+            top: 10px;
+            right: 2px;
+        }
+    }
+}
+
+
+@media (min-width: 1000px) {
+    header #navbar #list-games li a {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    header #navbar #list-games li a {
+        font-size: 1.4rem;
+    }
+
+    #welcome-title {
+        font-size: 2.1rem;
+    }
+
+    .browser-btn {
+        font-size: 1.7rem;
+    }
+
+    #sidebar-text {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1300px) {
+    header #navbar #list-games li a {
+        font-size: 1.5rem;
+    }
+}

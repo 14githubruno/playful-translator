@@ -1,0 +1,912 @@
+/*Primary style: root, html, body, main*/
+:root {
+    --backgroundColor: #0a2733;
+    --infoColor: #e8598b;
+    --navbarBorderColor: #fa807280;
+    --navbarItemsBorderColorShadow: #fa8072;
+    --translatorTitleColor: #db8739;
+    --translatorBorderShadow: #ffffffcc;
+    --textareaClickedColor: #fce26e;
+    --copyButtonBackgroundColor: #0a2733;
+    --copyButtonTextColor: #db8739;
+    --copyButtonBorderColor: #fa807280;
+    --copyButtonBorderColorShadow: #fa8072;
+    --copyButtonClickedColor: #fce26e;
+    --copiedTextareaBackgroundColor: #ea0449;
+    --copiedTextareaColor: #0a2733; 
+    --copiedTipColors: #ea0449;
+    --logoBackgroundColor: #0a2733;
+    --logoColor: #db8739;
+    --logoBorderColor: #db8739;
+    --moonColor: #0a2733;
+    --sunColor: #fce26e;
+    --translatorInfoTextColor: #f8f8f2;
+    --whatToAddForTranslationBackground: #ab059a;
+    --whatToAddForTranslationTextColor: #e3e3de;
+    --infoConsonantBackground: #002ea3;
+    --infoConsonantTextColor: #e3e3de;
+    --infoVowelBackground: #359617;
+    --infoVowelTextColor: #e3e3de;
+    --translatorInfoRule: #40455e;
+    --translatorInfoRuleColor: #e3e3de;
+    --footerTextColor: #faebd7;
+    --selectionBackgroundColor: #faebd7;
+    --selectionColor: #0a2733; 
+    --gameSwitchBackground: #0a2d3b;
+    --fontFamily: 'JetBrains Mono', monospace;
+}
+
+[data-theme='light'] {
+    --backgroundColor: #faebd7;
+    --infoColor: #e8598b;
+    --navbarBorderColor: #0a2733;
+    --navbarItemsBorderColorShadow: #0a2733;
+    --translatorTitleColor:#db8739;
+    --translatorBorderShadow: #0a2733;
+    --translatorInfoTextColor: #0a2733;
+    --textareaClickedColor: #0a2733;
+    --copyButtonBackgroundColor: #0a2733;
+    --copyButtonTextColor: #db8739;
+    --copyButtonBorderColor: #db8739;
+    --copyButtonBorderColorShadow: #0a2733;
+    --copyButtonClickedColor: #db8739;
+    --copiedTextareaBackgroundColor: #ea0449;
+    --copiedTextareaColor: #0a2733; 
+    --copiedTipColors: #ea0449;
+    --logoBackgroundColor: #0a2733;
+    --logoColor: #db8739;
+    --logoBorderColor: #db8739;
+    --moonColor: #0a2733;
+    --sunColor: #fce26e;
+    --whatToAddForTranslationBackground: #fce26e;
+    --whatToAddForTranslationTextColor: #081e27;
+    --infoConsonantBackground: #ff00ff;
+    --infoConsonantTextColor: #0a2733;
+    --infoVowelBackground: #92f5d9;
+    --infoVowelTextColor: #0a2733;
+    --translatorInfoRule: #dfdcdc;
+    --translatorInfoRuleColor: #0a2733;
+    --footerTextColor: #0a2733;
+    --selectionBackgroundColor: #0a2733;
+    --selectionColor: #faebd7;
+    --gameSwitchBackground:#ecdecb;
+    --fontFamily: 'JetBrains Mono', monospace;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-margin-top: 8rem;
+}
+
+::selection {
+    color: var(--selectionColor);
+    background-color: var(--selectionBackgroundColor);
+}
+
+html,
+body {
+    width: 100%;
+    min-width: 320px;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: var(--fontFamily);
+}
+
+body { 
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 140px;
+}
+
+body,
+main,
+.section-translator,
+.container-translator {
+    background-color: var(--backgroundColor);
+}
+
+/* Logo and Dark/light Theme*/
+.logo-and-dark-light-mode-container {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 5;
+    width: 100%;
+    min-width: 320px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dark-light-mode-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+}
+
+.checkbox {
+    opacity: 0;
+}
+
+.sun,
+.moon {
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.sun {
+    fill: var(--sunColor);
+}
+
+.moon {
+    display: none;
+    fill: var(--moonColor);
+}
+
+.sun:hover {
+   filter: drop-shadow(5px 5px 18px var(--sunColor));
+}
+
+.moon:hover {
+   filter: drop-shadow(5px 5px 20px var(--moonColor));
+}
+
+.anchor-logo {
+    text-decoration: none;
+}
+
+.logo-container {
+    border: 2px solid var(--logoBorderColor);
+    border-radius: 7px;
+    text-align: center;
+    color: var(--logoColor);
+    background-color: var(--logoBackgroundColor);
+    padding: 5px 4px 6px 4px;
+    position: relative;
+    top: 2px;
+}
+
+.logo {
+    color: var(--logoColor);
+    text-decoration: none;
+    font-size: 1.7rem;
+}
+
+.logo-container:hover,
+.logo-container:active {
+    transform: rotate(-5deg);
+}
+
+/*Button for SWITCH translator*/
+.section-button-switch {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background-color: transparent;
+    width: 80%;
+    min-width: 300px;
+    max-width: 800px;
+    align-self: center;
+    margin-top: 139px;
+}
+
+.container-button-switch {
+    width: 100%;
+}
+
+.button-switch {
+    color: var(--infoColor);
+    background-color: var(--backgroundColor);
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 6px 0px var(--translatorBorderShadow);
+    border-radius: 7px;
+    padding: 1px 0 3px 5px;
+    margin: 0 0 2px 0;
+    font-size: 1.7rem;
+    font-family: var(--fontFamily);
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    width: 100%;
+}
+
+.caret-up,
+.caret-down {
+    height: 1.2rem;
+    fill: var(--infoColor);
+    position: relative;
+    top: 1px;
+}
+
+.caret-down {
+    display: none;
+}
+
+.list-games-switch {
+    position: absolute;
+    width: 100%;
+    box-shadow: 0px 0px 7px 0px var(--translatorTitleColor);
+    border-radius: 7px;
+    border: none;
+    background-color: var(--backgroundColor);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.03s ease-in-out;
+}
+
+.list-games-switch a {
+    text-decoration: none;
+    color: var(--translatorTitleColor);
+    display: block;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.list-games-switch a:last-of-type {
+    padding-bottom: 8px;
+}
+
+.list-games-switch a:active {
+    color: var(--textareaClickedColor);
+    font-weight: bold;
+    background: var(--gameSwitchBackground);
+}
+
+/*Hidden Menu*/
+header {
+    display: none;
+}
+
+/*SECTION TRANSLATOR*/
+.section-translator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.section-translator .container-translator {
+    width: 80%;
+    min-width: 300px;
+    max-width: 800px;
+    max-height: 500px;
+    padding: 45px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    border: transparent;
+    box-shadow: 0px 0px 8px 0px var(--translatorBorderShadow);
+    border-radius: 7px;
+    margin-top: 30px;
+}
+
+.container-translator .container-title-button {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 60px;
+}
+
+.container-translator .title-translator {
+    letter-spacing: 2px;
+    font-size: 2.3rem;
+    color: var(--translatorTitleColor);
+    margin-right: 10px;
+}
+
+/* Area TEXTAREAS  - TRANSLATOR SECTION*/
+.container-translator .container-textareas {
+    width: 100%;
+}
+
+.container-textareas .input-output-area {
+    width: 80%;
+    color: var(--textareaClickedColor);
+    background-color: transparent;
+    border: transparent;
+    box-shadow: 0px 0px 8px 0px var(--translatorBorderShadow);
+    outline: none;
+    resize: none;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 1.6rem;
+    font-family: var(--fontFamily);
+    padding: 16px 16px 50px 16px;
+    margin-bottom: 40px;
+}
+
+.input-output-area:nth-of-type(2)::selection {
+    color: var(--copiedTextareaColor);
+    background-color: var(--copiedTextareaBackgroundColor);
+ }
+
+::-webkit-input-placeholder {
+    color: var(--textareaClickedColor);
+    opacity: 0.5;
+  }
+
+::-moz-placeholder {
+    color: var(--textareaClickedColor);
+  }
+
+:-ms-input-placeholder {
+    color: var(--textareaClickedColor);
+    opacity: 0.5;
+  }
+
+:-moz-placeholder {
+    color: var(--textareaClickedColor);
+  }
+
+.container-textareas .button-copy-container {
+    position: relative;
+    bottom: 20px;
+}
+
+.button-copy-container .button-textareas {
+    position: absolute;
+    right: 10%;
+    top: 100%;
+    width: 50px;
+    height: 30px;
+    padding-bottom: 3px;
+    color: var(--copyButtonTextColor);
+    border: var(--copyButtonBorderColor) 1px solid;
+    border-radius: 7px;
+    background-color: var(--copyButtonBackgroundColor);
+    font-size: 1.6rem;
+    font-family: var(--fontFamily);
+    visibility: hidden;
+    cursor: none;
+}
+
+.button-copy-container .button-textareas:hover {
+    font-weight: bold;
+    box-shadow: 0px 0px 6px 0px var(--copyButtonBorderColorShadow);
+}
+
+.button-copy-container .button-textareas:active {
+    box-shadow: 0px 0px 8px 0px var(--translatorBorderShadow);
+    color: var(--copyButtonClickedColor);
+}
+
+.button-copy-container .button-textareas-tooltip {
+    position: absolute;
+    left: 10%;
+    top: 3px;
+    padding-bottom: 2px;
+    width: 70px;
+    color: var(--copiedTipColors);
+    border: 1px solid transparent;
+    box-shadow: 0 0 8px 0 var(--copiedTipColors);
+    border-radius: 7px;
+    font-size: 1.6rem;
+    opacity: 0;
+}
+
+/* doubling class with JS when copy-button is clicked - SECTION TRANSLATOR*/
+.button-textareas-tooltip.show-tooltip {
+    animation: 1.1s showTooltip ease forwards;
+}
+
+/*INFO SECTION*/
+.button-info {
+    cursor: pointer;
+    color: var(--infoColor);
+    font-size: 1.35rem;
+    text-decoration: none;
+}
+
+.button-info:hover,
+.button-info:active {
+    opacity: 0.8;
+}
+
+.button-info::after {
+    content: "";
+    background: url(../icons/arrow-down.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 7px;
+    right: 3px;
+}
+
+.close-btn-info {
+    display: none;
+}
+
+.section-info {
+    margin: 80px 0 100px 0;
+    width: 100%;
+}
+
+.container-info {
+    width: 80%;
+    word-wrap: break-word;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container-info .title-info {
+    font-size: 2.3rem;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    font-family: var(--fontFamily);
+    color: var(--translatorTitleColor);
+}
+
+.container-info .translator-info {
+    font-size: 1.5rem;
+    line-height: 1.9;
+    font-family: var(--fontFamily);
+    margin: 10px 0 8px 0;
+    color: var(--translatorInfoTextColor);
+}
+
+.container-info .back-to-translator {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--infoColor);
+    font-size: 1.4rem;
+}
+
+.back-to-translator::after {
+    content: "";
+    background: url(../icons/arrow-up.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 7px;
+    right: 3px;
+}
+
+.back-to-translator:hover,
+.back-to-translator:active{
+    opacity: 0.8;
+}
+
+/* ((HIGHLIGHTS to show translation process and rules - INFO SECTION)) */
+.container-info .info-translator-rule {
+    background-color: var(--translatorInfoRule);
+    color: var(--translatorInfoRuleColor);
+}
+
+.container-info .operator-translator {
+    background-color: var(--whatToAddForTranslationBackground);
+    color: var(--whatToAddForTranslationTextColor);
+    padding: 0 3px;
+    font-size: 1.6rem;
+}
+
+.container-info .underline-vowel {
+    margin: 0 4px;
+    padding: 0 3px;
+    background-color: var(--infoVowelBackground);
+    color: var(--infoVowelTextColor);
+    font-size: 1.6rem;
+}
+
+.container-info .underline-consonant {
+    margin: 0 4px;
+    padding: 0 3px;
+    background-color: var(--infoConsonantBackground);
+    color: var(--infoConsonantTextColor);
+    font-size: 1.6rem;
+}
+
+/*footer*/
+footer {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--backgroundColor);
+}
+
+.footer-container {
+    font-size: 1.2rem;
+    color: var(--footerTextColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container .profile-reference {
+    cursor: pointer;
+    color: var(--infoColor);
+    text-decoration: none;
+}
+
+.profile-reference:hover,
+.profile-reference:active {
+    text-decoration: underline 0.15rem;
+}
+
+.profile-reference::after {
+    content: "";
+    background: url(../icons/box-arrow-right.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 20px;
+    width: 15px;
+    position: relative;
+    top: 6px;
+    left: 5px;
+    animation: arrowBoxMove 0.5s infinite;
+}
+
+/* style for scrollbar (chrome,edge,safari,opera) */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: 0.01rem solid var(--navbarItemsBorderColor);
+    box-shadow: inset 0 0 10px 0 var(--infoColor);
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--backgroundColor);
+    padding: 2px;
+}
+
+::-webkit-scrollbar-corner {
+   background: transparent;
+}
+
+/* KEYFRAMES for animation */
+@keyframes showTooltip {
+    1%, 10%, 70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes arrowBoxMove {
+    100% {
+        transform: rotate(-15deg);
+    }
+}
+
+
+/*MEDIA QUERIES for LARGER screens*/
+@media (min-width: 320px) {
+
+    /* handle min-widths and overflow */
+    body {
+        overflow-x: hidden;
+    }
+
+    html,
+    body,
+    .section-button-switch,
+    .logo-and-dark-light-mode-container,
+    .section-translator .container-translator {
+        min-width: 0;
+    }
+}
+
+@media (min-width: 820px) {
+
+    /* body */
+    body {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /*Logo and Dark/light Theme*/
+    .logo-and-dark-light-mode-container {
+        width: 16%;
+    }
+
+    .dark-light-mode-container {
+        position: fixed;
+        right: 2px;
+    }
+
+    .sun,
+    .moon {
+        top: -5px;
+    }
+
+    .anchor-logo {
+        position: fixed;
+        top: 10px;
+    }
+
+    /* button switch translator */
+    .section-button-switch {
+        display: none;
+    }
+
+    /* main element style */
+    main {
+        position: relative;
+        width: 84%;
+        left: 16%;
+        min-height: 92vh;  
+        padding: 35px 0 10px 0;
+    }
+
+    /* section translator */
+    main .section-translator {
+        align-items: center;
+        min-height: 85vh;
+
+    }
+
+    .section-translator .container-translator {
+        margin-top: 0;
+    }
+
+    .container-translator .container-title-button {
+        margin-bottom: 80px;
+    }
+
+    .container-title-button .button-info::after {
+        background: url(../icons/arrow-left-right.svg);
+        width: 17px;
+        height: 17px;
+        left: 5px;
+        top: 5px;
+    }
+
+    /* section info */
+    main .section-info{
+        position: absolute;
+        right: 0;
+        margin: 0;
+        width: 96%;
+        height: 510px;
+        border: transparent; 
+        background-color: var(--backgroundColor);
+        border-right: none;
+        border-top-left-radius: 7px;
+        border-bottom-left-radius: 7px;
+        box-shadow: 0px 0px 8px 0px var(--translatorBorderShadow);
+        z-index: 1; 
+        opacity: 0;
+        transform: translateX(100px);
+        animation: 0.1s displayInfo ease forwards;
+        display: none;
+    }
+
+    .close-btn-info {
+        display: block;
+        position: relative;
+        top: 0.5rem;
+        left: 0.5rem;
+        height: 1.7rem;
+        fill: var(--copiedTipColors);
+        cursor: pointer;
+    }
+
+    .close-btn-info:hover {
+        transform: scale(1.1);
+    }
+
+    .section-info .container-info {
+        width: 85%;
+        word-wrap: normal;
+    }
+
+    .container-info .back-to-translator {
+        display: none;
+    }
+
+    .container-info .translator-info {
+        line-height: 1.6;
+        font-size: 1.35rem;
+    }
+
+    .container-info .operator-translator,
+    .container-info .underline-consonant,
+    .container-info .underline-vowel {
+        font-size: 1.45rem;
+    }
+
+    /*Displayed Menu*/
+    header {
+        position: fixed;
+        left: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16%;
+    }
+
+    header .navbar {
+        width: 100%;
+        min-height: 100vh;
+        border-right: 1px solid var(--navbarBorderColor);
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .navbar::after,
+    .navbar::before{
+        content: "";
+        height: 100px;
+    }
+
+    header .navbar .list-games {
+        list-style: none;
+        width: 100%;
+        padding: 3px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header .navbar .list-games li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+        width: 95%;
+        margin-top: 2px;
+    }
+
+    header .navbar .list-games li a {
+        border: 1px solid var(--navbarBorderColor);
+        border-radius: 7px;
+        text-decoration: none;
+        color: var(--translatorTitleColor);
+        background-color: var(--backgroundColor);
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    header .navbar .list-games li a:hover {
+        cursor: pointer;
+        transform: rotate(5deg);
+        background-color: var(--backgroundColor);
+        box-shadow: 0px 0px 6px 0px var(--navbarItemsBorderColorShadow);
+        z-index: 1;
+        border-radius: 7px;
+        position: relative;
+        top: 10%;
+    }
+
+    header .navbar .list-games li a:active {
+        box-shadow: 0px 0px 8px 0px var(--navbarItemsBorderColorShadow);
+    }
+
+    /* (selected translator's style) - HEADER */
+    header .navbar .list-games li .translator-selected {
+        position: relative;
+        top: 10%;
+        cursor: pointer;
+        color: var(--textareaClickedColor);
+        background-color: var(--backgroundColor);
+        border-radius: 7px;
+        box-shadow: 0px 0px 8px 0px var(--navbarItemsBorderColorShadow);
+        transform: rotate(5deg);
+        font-weight: 400;  
+        z-index: 1;  
+    }
+    
+    header .navbar .list-games li .translator-selected:hover {
+        box-shadow: 0px 0px 9px 0px var(--navbarItemsBorderColorShadow);
+    }
+
+    /*Footer*/
+    footer {
+        position: relative;
+        left: 16%;
+        width: 84%;
+        min-height: 8vh;
+        margin: 0;
+        padding: 10px;
+    }
+
+    footer .footer-container {
+        max-width: 800px;
+    }
+
+    /* keyframes for animation*/
+    @keyframes displayInfo {
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}
+
+
+/* media for font-sizes */
+@media (min-width: 1000px) {
+    header .navbar .list-games li a {
+        font-size: 1.3rem;
+    }
+    .container-info .translator-info {
+        font-size: 1.4rem;
+    }
+    .container-info .operator-translator,
+    .container-info .underline-consonant,
+    .container-info .underline-vowel {
+        font-size: 1.5rem;
+    }
+
+    .container-translator .title-translator,
+    .container-info .title-info {
+        font-size: 2.5rem;
+    }
+
+}
+@media (min-width: 1200px) {
+    header .navbar .list-games li a {
+        font-size: 1.4rem;
+    }
+    .container-info .translator-info {
+        font-size: 1.45rem;
+    }
+    .container-info .operator-translator,
+    .container-info .underline-consonant,
+    .container-info .underline-vowel {
+        font-size: 1.55rem;
+    }
+}
+
+@media (min-width: 1300px) {
+    header .navbar .list-games li a {
+        font-size: 1.5rem;
+    }
+    .container-info .translator-info {
+        font-size: 1.5rem;
+    }
+    .container-info .operator-translator,
+    .container-info .underline-consonant,
+    .container-info .underline-vowel {
+        font-size: 1.6rem;
+    }
+}
