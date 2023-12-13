@@ -7,3 +7,5 @@ After this funny "alphabetical" encounter and some basic research, I clearly fou
 Long story short, the aim of this little work was to gather in one place 5 different pseudo-languages, that is allowing the user 5 different translations: from Italian into `Farfallino`, from French into `Javanais`, from Spanish into `Jeringonza`, from German into `Löffelsprache` and from English into `Pig Latin`.
 
 The translator has both dark and light mode enabled (dark mode is the default one) and provides for each pseudo-language a dedicated section containing the rules of translation.
+
+It is deployed to GitHub Pages.
